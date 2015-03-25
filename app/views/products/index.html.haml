@@ -30,3 +30,28 @@
           %td= link_to 'Show', product
           %td= link_to 'Edit', edit_product_path(product)
           %td= link_to 'Destroy', product, :data => { confirm: 'Are you sure?' }, :method => :delete
+
+- @products.each do |product|
+  .col-sm-6.col-md-4
+    .thumbnail
+      %h4.text-center
+        %span.label.label-info= product.company.name
+        %img.img-responsive{src: product.image }
+      .caption
+        .row
+          .col-md-6.col-xs-6
+            %h3 Galaxy S5
+          .col-md-6.col-xs-6
+            %h3
+            %label= product.price
+        %p.btn-productdescription= product.description
+        .row
+          .col-md-6
+            %a.btn.btn-primary.btn-product
+              %span.glyphicon.glyphicon-thumbs-up
+              Like
+          .col-md-6
+            %a.btn.btn-success.btn-product{href: '#'}
+              %span.glyphicon.glyphicon-shopping-cart
+              Buy
+        %p
