@@ -9,11 +9,12 @@
     .thumbnail
       %h4.text-center
         %span.label.label-info= product.company.try :name
-        %img.img-responsive{src: product.image }
+        %img.img-responsive{src: product.image.url(:thumb) }
+        .pullright ☆☆☆☆☆
       .caption
         .row
           .col-md-6.col-xs-6
-            %h3 Galaxy S5
+            %h3= "Deal ##{product.id}"
           .col-md-6.col-xs-6
             %h3
             %label= product.price

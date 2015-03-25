@@ -4,7 +4,7 @@ before_action :authenticate_user!
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all
+    @products = Product.all.limit(10)
   end
 
   # GET /products/1
