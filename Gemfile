@@ -34,6 +34,8 @@ gem 'forgery', '0.6.0'
 gem 'wisper', '~> 1.6.0'
 gem 'bunny', '~> 1.7.0'
 gem "messengerjs-rails", "~> 1.4.1"
+gem 'paperclip', '~> 4.2.1'
+gem 'devise', '~> 3.4.1'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
