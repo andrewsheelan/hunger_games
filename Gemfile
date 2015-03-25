@@ -37,6 +37,9 @@ gem "messengerjs-rails", "~> 1.4.1"
 gem 'paperclip', '~> 4.2.1'
 gem 'devise', '~> 3.4.1'
 
+gem 'nokogiri', '~> 1.6.6.2'
+gem 'mechanize', '~> 2.7.3'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
