@@ -14,7 +14,8 @@ namespace :populate do
             name: title,
             description: "#{title} reviews: #{reviews}",
             price: price,
-            ratings: reviews.match(/(\d)/)[0]
+            ratings: reviews.match(/(\d)/)[0],
+            quantity: 1
           )
       end
       page = Nokogiri::HTML(open(page.css(".zg_pagination #zg_page#{pg+1} a").attr('href').text)) unless pg==total

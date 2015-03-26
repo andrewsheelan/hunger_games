@@ -13,7 +13,8 @@ before_action :authenticate_user!
         suggest: true,
         facets: [:ratings],
         smart_facets: true,
-        page: params[:page]
+        page: params[:page],
+        order: {_score: :desc}
     )
   end
 
@@ -29,6 +30,18 @@ before_action :authenticate_user!
 
   # GET /products/1/edit
   def edit
+  end
+
+  # GET /products/1/buy
+  def buy
+    @product = Product.find params[:id]
+    @product.update quantity: (@product.quantity - 1)
+    render nothing: true
+  end
+
+  # GET /products/1/watch
+  def watch
+    render nothing: true
   end
 
   # POST /products
