@@ -1,0 +1,53 @@
+- if @products.suggestions.present?
+  .row
+    .text-danger
+      Did you mean:
+      - @products.suggestions.each do |suggestion|
+        = link_to suggestion, query: suggestion
+
+- if @products.facets.present?
+  .row
+    .text-warning
+      FILTER BY
+      - if @products.facets["ratings"]["terms"].present?
+        |
+        - @products.facets["ratings"]["terms"].each do |filter|
+          = link_to "#{filter['term']} Ratings", query: params[:query], ratings: filter['term']
+          |
+
+%br
+
+- @products.each do |product|
+  .col-sm-6.col-md-4
+    .thumbnail
+      %h4.text-center
+        .row
+          .col-md-6.col-xs-6
+            %span.label.label-info= product.company.try :name
+            %img.img-responsive{src: product.image.url(:thumb) }
+          .col-md-6.col-xs-6
+            %h3
+              = "Deal ##{product.id}"
+            .rating
+              - 5.times do |x|
+                = product.ratings > x ? '★' : '☆'
+            %br
+            = "$#{product.price}"
+
+      .caption
+        %p.btn-productdescription= product.description
+        .row
+          .col-md-6
+            %a.btn.btn-primary.btn-product
+              %span.glyphicon.glyphicon-thumbs-up
+              Like
+          .col-md-6
+            %a.btn.btn-success.btn-product{href: '#'}
+              %span.glyphicon.glyphicon-shopping-cart
+              Buy
+        %p
+
+%br
+.row
+  .col-md-12
+    .pull-right= paginate @products

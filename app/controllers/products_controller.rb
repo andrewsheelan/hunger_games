@@ -4,7 +4,17 @@ before_action :authenticate_user!
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all.limit(10)
+    where_clause = {}
+    where_clause.merge! ratings: params[:ratings] if params[:ratings]
+    @products = Product.search(
+        params[:query] || '*' ,
+        where: where_clause,
+        limit: 10,
+        suggest: true,
+        facets: [:ratings],
+        smart_facets: true,
+        page: params[:page]
+    )
   end
 
   # GET /products/1

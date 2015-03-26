@@ -3,29 +3,10 @@
     %span.glyphicon.glyphicon-plus
     New Product
   %h1 Listing products
+.row
+  .col-md-12
+    .pull-right
+      = render 'search_form'
 
-- @products.each do |product|
-  .col-sm-6.col-md-4
-    .thumbnail
-      %h4.text-center
-        %span.label.label-info= product.company.try :name
-        %img.img-responsive{src: product.image.url(:thumb) }
-        .pullright ☆☆☆☆☆
-      .caption
-        .row
-          .col-md-6.col-xs-6
-            %h3= "Deal ##{product.id}"
-          .col-md-6.col-xs-6
-            %h3
-            %label= product.price
-        %p.btn-productdescription= product.description
-        .row
-          .col-md-6
-            %a.btn.btn-primary.btn-product
-              %span.glyphicon.glyphicon-thumbs-up
-              Like
-          .col-md-6
-            %a.btn.btn-success.btn-product{href: '#'}
-              %span.glyphicon.glyphicon-shopping-cart
-              Buy
-        %p
+#products-listing
+  = render 'products'

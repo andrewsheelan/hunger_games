@@ -9,9 +9,15 @@ namespace :populate do
           title = product.css('.zg_title').text
           reviews = product.css('.zg_reviews .swSprite span').text
           price = product.css('.zg_price').text.slice(/\d+.\d+/)
-          Product.create!(image: open(image), name: title, description: "#{title} reviews: #{reviews}", price: price)
+          Product.create!(
+            image: open(image),
+            name: title,
+            description: "#{title} reviews: #{reviews}",
+            price: price,
+            ratings: reviews.match(/(\d)/)[0]
+          )
       end
-      page = Nokogiri::HTML(open(page.css(".zg_pagination #zg_page#{pg+1} a").attr('href').text))
+      page = Nokogiri::HTML(open(page.css(".zg_pagination #zg_page#{pg+1} a").attr('href').text)) unless pg==total
     end
   end
 end
