@@ -1,0 +1,17 @@
+#accordion.panel-group{role: 'tablist', aria: {multiselectable: 'true'}}
+  =render 'chats/form'
+
+
+  .panel.panel-default
+    #headingTwo.panel-heading{role: 'tab', data: {toggle: 'collapse', parent: '#accordion' }, href: '#collapseOne', aria: {expanded: 'true', controls: 'collapseOne'}}
+      %h4.panel-title Chat
+
+    #collapseOne.panel-collapse.collapse.in{role: 'tabpanel', aria: {labelledby: 'headingTwo'}}
+      .panel-body That fall, as Nadia and Masha got shipped off to prison camps in Siberia, South Brooklyn tried to recover from the storm. My dad and I spent a lot of time in the same apartment engrossed in separate laptops, separate internet missives. He followed Russian news bloggers closely and would update me on troubling developments. A rise in protofascist nationalism
+
+  .panel.panel-default
+    #headingThree.panel-heading{role: 'tab', data: {toggle: 'collapse', parent: '#accordion' }, href: '#collapseOne', aria: {expanded: 'true', controls: 'collapseOne'}}
+      %h4.panel-title notifications
+
+    #collapseOne.panel-collapse.collapse.in{role: 'tabpanel', aria: {labelledby: 'headingThree'}}
+      .panel-body That fall, as Nadia and Masha got shipped off to prison camps in Siberia, South Brooklyn tried to recover from the storm. My dad and I spent a lot of time in the same apartment engrossed in separate laptops, separate internet missives. He followed Russian news bloggers closely and would update me on troubling developments. A rise in protofascist nationalism

@@ -1,0 +1,45 @@
+// Place all the styles related to the chats controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+::-webkit-scrollbar-track
+{
+    background-color: #fff;
+}
+
+::-webkit-scrollbar
+{
+    background-color: #fff;
+}
+
+::-webkit-scrollbar-thumb
+{
+    background-color: #fff;
+}
+
+::-webkit-scrollbar-track
+{
+    background-color: #fff;
+}
+
+::-webkit-scrollbar
+{
+    background-color: #fff;
+}
+
+::-webkit-scrollbar-thumb
+{
+    background-color: #fff;
+}
+
+
+.chat {
+ overflow: hidden;
+ .chat-body {
+   margin-right: -16px;
+   overflow-y: scroll;
+   overflow-x: hidden;
+  }
+}

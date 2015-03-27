@@ -1,15 +1,16 @@
-- if @products.suggestions.present?
-  .row
-    .text-danger
-      Did you mean:
-      - @products.suggestions.each do |suggestion|
-        = link_to suggestion, query: suggestion
+.container
+  - if @products.suggestions.present?
+    .row
+      .text-danger
+        Did you mean:
+        - @products.suggestions.each do |suggestion|
+          = link_to suggestion, query: suggestion
 
-- if @products.facets.present?
-  .row
-    .text-warning
-      FILTER BY
-      - if @products.facets["ratings"]["terms"].present?
+.text-center
+  - if @products.facets.present? && @products.facets["ratings"]["terms"].present?
+    .row
+      .text-warning
+        FILTER BY
         |
         - @products.facets["ratings"]["terms"].each do |filter|
           = link_to "#{filter['term']} Ratings", query: params[:query], ratings: filter['term']
@@ -28,14 +29,14 @@
           .col-md-6.col-xs-6
             %h3
               = "Deal ##{product.id}"
-            .rating
-              - 5.times do |x|
-                = product.ratings > x ? '★' : '☆'
             %br
             = "$#{product.price}"
 
       .caption
         %p.btn-productdescription= product.description
+        .rating
+          - 5.times do |x|
+            = product.ratings > x ? '★' : '☆'
         %p QUANTITY: #{product.quantity}
         .row.product-actions-row
           - if product.quantity > 0
@@ -55,4 +56,4 @@
 %br
 .row
   .col-md-12
-    .pull-right= paginate @products
+    .text-center= paginate @products

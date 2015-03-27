@@ -1,12 +1,13 @@
-.page-header
-  = link_to new_product_path, :class => 'btn btn-primary' do
-    %span.glyphicon.glyphicon-plus
-    New Product
-  %h1 Listing products
 .row
-  .col-md-12
-    .pull-right
+  .col-md-9
+    .page-header
+      = link_to new_product_path, :class => 'btn btn-primary' do
+        %span.glyphicon.glyphicon-plus
+        New Product
+      %h1 Listing products
+    .text-left
       = render 'search_form'
-
-#products-listing
-  = render 'products'
+    #products-listing
+      = render 'products'
+  .col-md-3
+    = render 'live_panel'
