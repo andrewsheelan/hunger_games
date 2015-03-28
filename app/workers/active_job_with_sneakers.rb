@@ -5,8 +5,7 @@ require 'active_job'
 require 'sneakers'
 
 opts = {
-  :amqp => 'CLOUDAMQP_URL',
-  :vhost => 'vhost',
+  :amqp => 'amqp://127.0.0.1:5672',
   :exchange => 'sneakers',
   :exchange_type => :direct
 }
@@ -14,13 +13,13 @@ opts = {
 Sneakers.configure(opts)
 ActiveJob::Base.queue_adapter = :sneakers
 
-class MyBackgroundJob < ActiveJob::Base
+class ActiveJobWithSneakers < ActiveJob::Base
   queue_as :job_queue
 
-  def perform()
+  def run()
     puts 'Perform a job'
   end
 end
 
 # Enqueue a job to be performed as soon the queueing system is free.
-MyBackgroundJob.perform_later()
+# ActiveJobWithSneakers.perform_later()

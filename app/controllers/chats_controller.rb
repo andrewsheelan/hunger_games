@@ -7,11 +7,11 @@ class ChatsController < ApplicationController
     @chat = Chat.new(chat_params)
     @chat.user = current_user
     if @chat.save
-      Pusher['test_channel'].trigger('my_event', {
+      Pusher['global_chat_channel'].trigger('global_chat_event', {
         id: @chat.id,
         message: @chat.message,
-        user: @chat.user.name,
-        color: @chat.user.color,
+        user: @chat.user.email,
+        color: 'red',#@chat.user.color,
         created_at: @chat.user.created_at.strftime("%I:%M%p")
       })
     end
