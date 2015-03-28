@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   resources :companies
+  resources :chats, only: [:create, :new]
 
   resources :products do
     member do
