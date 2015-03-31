@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
+  require 'pusher'
   before_action :set_product, only: [:show, :edit, :update, :destroy]
-before_action :authenticate_user!
+  before_action :authenticate_user!
   # GET /products
   # GET /products.json
   def index
@@ -35,12 +36,22 @@ before_action :authenticate_user!
   # GET /products/1/buy
   def buy
     @product = Product.find params[:id]
-    @product.update quantity: (@product.quantity - 1)
+    updated = @product.update quantity: (@product.quantity - 1)
+    if updated
+      Pusher['product_notifications_channel'].trigger('product_notifications_event', {
+        id: @product.id,
+        message: "Just bought '#{@product.name}'!!",
+        user: current_user.email.match(/^(.*)@/)[1],
+        color: 'red',#@chat.user.color,
+        created_at: current_user.created_at.strftime("%I:%M%p")
+      })
+    end
     render nothing: true
   end
 
   # GET /products/1/watch
   def watch
+    current_user.watchlists << Product.find(params[:id])
     render nothing: true
   end
 

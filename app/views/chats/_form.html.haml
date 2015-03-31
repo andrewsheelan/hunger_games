@@ -1,16 +1,16 @@
 = form_for(Chat.new, remote: true) do |f|
-  #chat-form.panel.panel-primary
+  #chat-form.panel.panel-default
     #headingChat.panel-heading{style: 'cursor: pointer', role: 'tab'}
       %h4.panel-title
-        %a{data: {toggle: 'collapse', parent: '#accordion'}, href: '#collapseChat', aria: {expanded: 'true', controls: 'collapseChat'}}
+        %a{data: {toggle: 'collapse', parent: '#accordion'}, href: '#collapseChat', aria: {expanded: 'false', controls: 'collapseChat'}}
           %span.glyphicon.glyphicon-comment
           Chat
           %span.glyphicon.glyphicon-collapse-down.pull-right
 
     #collapseChat.panel-collapse.collapse.in{role: 'tabpanel', aria: {labelledby: 'headingOne'}}
       .panel-body
-        .chat
-          .chat-body.clearfix{ style: "height: 200px; overflow: scroll;"}
+        .chat.no-border
+          .chat-body.no-border-body.clearfix{ style: "height: 200px; overflow: scroll;"}
 
       .panel-footer
         .input-group

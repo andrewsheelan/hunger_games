@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150325231810) do
+ActiveRecord::Schema.define(version: 20150331205708) do
 
   create_table "chats", force: :cascade do |t|
     t.integer  "user_id"
@@ -44,6 +44,15 @@ ActiveRecord::Schema.define(version: 20150325231810) do
   end
 
   add_index "products", ["company_id"], name: "index_products_on_company_id"
+
+  create_table "products_users", force: :cascade do |t|
+    t.integer "product_id", null: false
+    t.integer "user_id",    null: false
+  end
+
+  add_index "products_users", ["product_id", "user_id"], name: "products_user_index", unique: true
+  add_index "products_users", ["product_id"], name: "index_products_users_on_product_id"
+  add_index "products_users", ["user_id"], name: "index_products_users_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",     null: false

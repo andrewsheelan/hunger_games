@@ -1,7 +1,5 @@
 class Chat
   constructor: (attr) ->
-    @chat = $('#chat-form')
-
     # Enable pusher logging - don't include this in production
     Pusher.log = (message) ->
       window.console.log message if window.console && window.console.log
@@ -18,15 +16,6 @@ class Chat
       $("#p-#{data.id}").emoticonize { delay: 800, animate: true }
 
       chat_body.scrollTop chat_body.prop('scrollHeight') #Scroll chat to the bottom of the feed
-
-    @chat.on 'click', '.panel-max-min', (e) ->
-      $('#chat-form .panel-body').toggle()
-      $('#chat-form .panel-footer').toggle()
-
-    @chat.on 'click', '.user-select', (e) ->
-      $('#chat_user_id').val $(e.target).attr('user')
-      $('.heading-user').html $(e.target).html()
-      e.preventDefault()
 
 $(document).on "ready page:load", ->
   new Chat() if $('#chat-form').length

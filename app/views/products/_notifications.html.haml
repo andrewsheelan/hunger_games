@@ -1,0 +1,12 @@
+#product-notification.panel.panel-default
+  #headingProductNotification.panel-heading{style: 'cursor: pointer', role: 'tab'}
+    %h4.panel-title
+      %a{data: {toggle: 'collapse', parent: '#accordion'}, href: '#collapseProductNotification', aria: {expanded: 'false', controls: 'collapseProductNotification'}}
+        %span.glyphicon.glyphicon-bullhorn
+        Product Notification
+        %span.glyphicon.glyphicon-collapse-down.pull-right
+
+  #collapseProductNotification.panel-collapse.collapse.in{role: 'tabpanel', aria: {labelledby: 'headingOne'}}
+    .panel-body
+      .product-notification.no-border
+        .product-notification-body.no-border-body.clearfix{ style: "height: 200px; overflow: scroll;"}

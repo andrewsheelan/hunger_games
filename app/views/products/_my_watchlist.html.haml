@@ -1,0 +1,12 @@
+#my-watchlist.panel.panel-default
+  #headingMyWatchlist.panel-heading{style: 'cursor: pointer', role: 'tab'}
+    %h4.panel-title
+      %a{data: {toggle: 'collapse', parent: '#accordion'}, href: '#collapseMyWatchlist', aria: {expanded: 'true', controls: 'collapseMyWatchlist'}}
+        %span.glyphicon.glyphicon-eye-open
+        My Watchlist
+        %span.glyphicon.glyphicon-collapse-down.pull-right
+
+  #collapseMyWatchlist.panel-collapse.collapse.in{role: 'tabpanel', aria: {labelledby: 'headingOne'}}
+    .panel-body
+      .my-watchlist.no-border
+        .my-watchlist-body.no-border-body.clearfix{ style: "height: 200px; overflow: scroll;"}
